@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="ngu-token" content="{{ api_token }}">
+    <title>{{ tool_title }} — GeOVILabs</title>
+    <meta name="description" content="{{ tool_desc }}">
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/nav.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="tool-page">
+    {% include 'partials/navbar.html' %}
+
+    <div class="gnav-back">
+        <div class="gnav-back-inner">
+            <a class="gnav-back-link" href="/#studio">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Back to Home
+            </a>
+            <span class="gnav-back-title">{{ tool_category }} / {{ tool_title }}</span>
+            {% if tool == 'video' %}
+                <span class="gnav-badge" id="gpu-badge">
+                    <span class="badge-dot"></span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg>
+                    <span id="gpu-status">Checking&hellip;</span>
+                </span>
+                <button class="gnav-about-btn" id="about-btn">About</button>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if tool == 'video' %}
+        <div id="pro-warning" class="pro-warning hidden"></div>
+        {% include 'partials/about_modal.html' %}
+    {% endif %}
+
+    {% include 'tool/panels.html' %}
+
+    <script src="/static/js/nav.js"></script>
+    <script src="/static/js/image-viewer.js"></script>
+    {% if tool == 'image' or tool == 'convert' %}
+        <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+    {% endif %}
+    {% if tool == 'image' or tool == 'video' %}
+        <script src="/static/js/pro-upscaler.js"></script>
+    {% endif %}
+    {% for s in tool_scripts %}
+        <script src="{{ s }}"></script>
+    {% endfor %}
+</body>
+</html>

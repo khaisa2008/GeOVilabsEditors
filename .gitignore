@@ -1,0 +1,50 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Secrets and credentials — never commit these
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.keystore
+
+# Uploads and outputs (user data)
+uploads/
+outputs/
+frames/
+tasks.db
+
+# Test files
+test_*.mp4
+test_*.png
+
+# ONNX models (too large for git — downloaded via setup.sh or in-app)
+static/models/*.onnx
+models/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE / local tooling (machine-specific paths)
+.vscode/
+.idea/
+.claude/
+
+# Desktop build outputs
+node_modules/
+src-tauri/target/
+src-tauri/binaries/*
+!src-tauri/binaries/.gitkeep
+src-tauri/gen/
+dist/
+build/
+*.spec.bak
+package-lock.json
+
+# Internal marketing material — never commit
+launch-kit/

@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeOVILabs — Free AI Photo, Audio &amp; Video Studio</title>
+    <meta name="description" content="Free AI photo, audio and video studio that runs entirely on your device.">
+    <meta name="ngu-token" content="{{ api_token }}">
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="stylesheet" href="/static/css/nav.css">
+    <link rel="stylesheet" href="/static/css/landing.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+                        display: ['Sora', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        base: '#030712',
+                        panel: 'rgba(255,255,255,0.03)',
+                    },
+                }
+            }
+        };
+    </script>
+</head>
+<body class="font-sans text-white antialiased selection:bg-emerald-500 selection:text-white">
+    {% include 'partials/navbar.html' %}
+
+    <!-- ===== HERO SECTION ===== -->
+    <section id="home" class="relative pt-12 pb-20 overflow-hidden scroll-margin-top">
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        
+        <div class="max-w-[1350px] mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center relative z-10">
+            <!-- Left Hero Content -->
+            <div class="lg:col-span-6 reveal reveal-left home-hero-left">
+                <div class="home-badge inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-semibold tracking-wide mb-6">
+                    <span class="text-emerald-400">★</span> All-in-One Media Toolkit
+                </div>
+                
+                <h1 class="home-title font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-white">
+                    <span class="home-line"><span>Enhance. Refine.</span></span>
+                    <span class="home-line"><span>Perfect Your <span class="home-media">Media</span></span></span>
+                </h1>
+                
+                <p class="home-sub mt-5 text-slate-400 text-base leading-relaxed max-w-lg">
+                    Edit and enhance your images, audio, and videos with our powerful and easy-to-use tools. Achieve professional results in just a few clicks.
+                </p>
+                
+                <div class="home-cta mt-8 flex flex-wrap gap-4 items-center">
+                    <a href="#studio" class="home-cta-btn inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-sm transition-all shadow-lg shadow-emerald-600/30">
+                        Get Started Free
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                    <a href="#studio" class="home-cta-btn home-cta-secondary inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-800 text-slate-300 font-medium text-sm transition-all">
+                        Explore All Tools
+                    </a>
+                </div>
+
+                <!-- Trust / Features Badges -->
+                <div class="home-badges mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-slate-800/80 pt-8">
+                    <div class="home-badge-item flex items-center gap-2.5">
+                        <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-emerald-400">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        </div>
+                        <span class="text-xs font-medium text-slate-300 leading-tight">No Installation Required</span>
+                    </div>
+                    <div class="home-badge-item flex items-center gap-2.5">
+                        <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-emerald-400">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        </div>
+                        <span class="text-xs font-medium text-slate-300 leading-tight">Works on All Devices</span>
+                    </div>
+                    <div class="home-badge-item flex items-center gap-2.5">
+                        <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-emerald-400">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <span class="text-xs font-medium text-slate-300 leading-tight">Fast &amp; Secure Processing</span>
+                    </div>
+                    <div class="home-badge-item flex items-center gap-2.5">
+                        <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-emerald-400">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                        </div>
+                        <span class="text-xs font-medium text-slate-300 leading-tight">High Quality Output</span>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Right Hero Visual Card -->
+        <div class="lg:col-span-6 reveal reveal-right home-hero-right">
+            <!-- Kontainer Perspektif Utama -->
+            <div class="relative mx-auto max-w-md lg:max-w-none py-6 px-4 hero-visual-wrapper" style="perspective: 1500px;">
+                
+                <!-- === DECORATIVE ANIMATED BACKGROUND === -->
+                <div class="hero-grid-lines"></div>
+
+                <!-- Floating Orbs -->
+                <div class="hero-deco-orb hero-deco-orb-1"></div>
+                <div class="hero-deco-orb hero-deco-orb-2"></div>
+                <div class="hero-deco-orb hero-deco-orb-3"></div>
+
+                <!-- Orbit Rings -->
+                <div class="hero-orbit-ring hero-orbit-ring-1">
+                    <div class="hero-orbit-dot" style="background: rgba(0,208,132,0.8); box-shadow: 0 0 10px rgba(0,208,132,0.6);"></div>
+                    <div class="hero-orbit-dot" style="background: rgba(0,208,132,0.8); box-shadow: 0 0 10px rgba(0,208,132,0.6); top: auto; bottom: -3px; left: 20%; margin-left: 0;"></div>
+                </div>
+                <div class="hero-orbit-ring hero-orbit-ring-2">
+                    <div class="hero-orbit-dot" style="background: rgba(52,230,161,0.7); box-shadow: 0 0 10px rgba(52,230,161,0.5);"></div>
+                </div>
+
+                <!-- Shimmer Lines -->
+                <div class="hero-shimmer-line" style="top: 20%; right: 0; transform: rotate(-15deg); animation-delay: 0s;"></div>
+                <div class="hero-shimmer-line" style="bottom: 30%; left: 5%; transform: rotate(10deg); animation-delay: 1.2s;"></div>
+                <div class="hero-shimmer-line" style="top: 60%; right: 15%; transform: rotate(-5deg); animation-delay: 2.4s;"></div>
+
+                <!-- Particles Container -->
+                <div class="hero-particles absolute inset-0 pointer-events-none overflow-hidden z-0"></div>
+                <!-- === END DECORATIVE === -->
+
+                <!-- Parent Utama 3D Transform -->
+                <div class="hero-window-entry relative transition-transform duration-500" style="transform-style: preserve-3d; transform: rotateY(-10deg) rotateX(5deg);">
+
+                    <!-- Glow Effect Belakang -->
+                    <div class="absolute -inset-2 rounded-3xl bg-gradient-to-r from-emerald-500 via-teal-500 to-green-600 opacity-40 blur-3xl animate-pulse-slow" style="transform: translateZ(-50px);"></div>
+
+                    <!-- Main Window Container -->
+                    <div class="relative rounded-2xl border border-emerald-500/30 bg-[#06100d]/90 p-5 backdrop-blur-2xl animate-[neonPulse_4s_ease-in-out_infinite] h-[240px] md:h-[420px]" style="transform-style: preserve-3d;">
+                        
+                        <!-- Window Header Dots -->
+                        <div class="hero-window-dots flex items-center gap-2 pb-4 mb-2 border-b border-slate-800/80">
+                            <span class="hero-dot w-3 h-3 rounded-full bg-rose-500/80 shadow-[0_0_10px_rgba(244,63,94,0.8)]"></span>
+                            <span class="hero-dot w-3 h-3 rounded-full bg-amber-500/80 shadow-[0_0_10px_rgba(245,158,11,0.8)]"></span>
+                            <span class="hero-dot w-3 h-3 rounded-full bg-emerald-500/80 shadow-[0_0_10px_rgba(16,185,129,0.8)]"></span>
+                        </div>
+
+                        <!-- App Main Canvas / Image Preview -->
+                        <div class="relative pl-16 sm:pl-28 min-h-[220px] sm:min-h-[260px]">
+                            <div class="relative h-full w-full rounded-xl overflow-hidden border border-slate-700/50 shadow-inner">
+                                <img src="/static/assets/hero.png" alt="Studio Preview" class="hero-canvas-img w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#06100d]/70 via-transparent to-transparent"></div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Sidebar Tools Wrapper -->
+                        <div class="hero-floating-sidebar absolute top-16 -left-5 sm:-left-12 space-y-3.5 z-20" style="transform: translateZ(ma50px);">
+                            <div class="space-y-3.5 animate-float-slow">
+                                
+                                <!-- 1. Card Image -->
+                                <div class="hero-tool-card flex items-center gap-3 sm:gap-3 px-3 sm:px-8 py-2 sm:py-3.5 rounded-xl bg-gradient-to-r from-slate-900/95 to-emerald-950/80 text-emerald-300 backdrop-blur-xl hover:scale-105 transition-transform cursor-pointer border border-emerald-400/50 shadow-[0_0_15px_rgba(0,208,132,0.25)] hover:shadow-[0_0_25px_rgba(0,208,132,0.5)] hover:border-emerald-400">
+                                    <div class="p-1.5 rounded-lg bg-emerald-500/20 text-emerald-400">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M20.4 14.5 16 10l-6 6"/><path d="m14 14 2-2 4.4 4.4"/></svg>
+                                    </div>
+                                    <span class="text-sm sm:text-sm font-semibold tracking-wide text-emerald-100">Image</span>
+                                </div>
+
+                                <!-- 2. Card Audio -->
+                                <div class="hero-tool-card flex items-center gap-3 sm:gap-3 px-3 sm:px-8 py-2 sm:py-3.5 rounded-xl bg-gradient-to-r from-slate-900/95 to-amber-950/80 text-amber-300 backdrop-blur-xl hover:scale-105 transition-transform cursor-pointer border border-amber-400/50 shadow-[0_0_15px_rgba(251,191,36,0.25)] hover:shadow-[0_0_25px_rgba(251,191,36,0.5)] hover:border-amber-400">
+                                    <div class="p-1.5 rounded-lg bg-amber-500/20 text-amber-400">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                                    </div>
+                                    <span class="text-sm sm:text-sm font-semibold tracking-wide text-amber-100">Audio</span>
+                                </div>
+
+                                <!-- 3. Card Video -->
+                                <div class="hero-tool-card flex items-center gap-3 sm:gap-3 px-3 sm:px-8 py-2 sm:py-3.5 rounded-xl bg-gradient-to-r from-slate-900/95 to-rose-950/80 text-rose-300 backdrop-blur-xl hover:scale-105 transition-transform cursor-pointer border border-rose-500/50 shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:shadow-[0_0_25px_rgba(244,63,94,0.5)] hover:border-rose-400">
+                                    <div class="p-1.5 rounded-lg bg-rose-500/20 text-rose-400">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M10 9l6 3-6 3z"/></svg>
+                                    </div>
+                                    <span class="text-sm sm:text-sm font-semibold tracking-wide text-rose-100">Video</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Floating Bottom Tools Bar Wrapper -->
+                        <div class="hero-bottom-bar absolute -bottom-4 left-6 right-8 sm:-bottom-5 sm:left-14 sm:right-10 z-30" style="transform: translateZ(80px);">
+                            <div class="animate-float-delayed">
+                                <img src="/static/assets/vertical-bar.png" alt="Tools Bar" class="hero-bottom-bar-img w-full h-auto object-contain rounded-xl neon-bottom-bar">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- STATS BAR (Feature Highlights) -->
+        <div class="max-w-[1350px] mx-auto px-6 mt-16 reveal reveal-up home-stats">
+            <div class="stats-bar-container rounded-2xl bg-[#06100d]/90 border border-slate-800/80 shadow-xl backdrop-blur-md p-6 sm:p-8">
+                <div class="stats-bar-grid">
+
+                    <!-- Item 1 -->
+                    <div class="stats-bar-item md:border-r border-slate-800/60 md:pr-4">
+                        <div class="stats-icon bg-emerald-500/10 text-emerald-400">
+                            <svg width="30" height="30" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 5h18v14H3z"/>
+                                <path d="M3 15l5-5 4 4 3-3 6 6"/>
+                                <circle cx="8" cy="9" r="1.5"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-white">
+                                4K – 8K
+                            </h3>
+                            <p class="text-xs text-slate-400">
+                                Image & Video Resolution
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="stats-bar-item md:border-r border-slate-800/60 md:pr-4">
+                        <div class="stats-icon bg-emerald-500/10 text-emerald-400">
+                            <svg width="30" height="30" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-white">
+                                1 – 2s
+                            </h3>
+                            <p class="text-xs text-slate-400">
+                                Fast Processing
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="stats-bar-item md:border-r border-slate-800/60 md:pr-4">
+                        <div class="stats-icon bg-emerald-500/10 text-emerald-400">
+                            <svg width="30" height="30" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 3L20 6V11C20 16.5 16.5 20 12 21C7.5 20 4 16.5 4 11V6L12 3Z"/>
+                                <path d="M9 12L11 14L15 10"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-white">
+                                No Database
+                            </h3>
+                            <p class="text-xs text-slate-400">
+                                Your Data Stays Private
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="stats-bar-item">
+                        <div class="stats-icon bg-amber-500/10 text-amber-400">
+                            <svg width="30" height="30" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2v20"/>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-white">
+                                Free
+                            </h3>
+                            <p class="text-xs text-slate-400">
+                                Free to Use
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STUDIO TOOLS SECTION ===== -->
+    <section id="studio" class="py-16 relative scroll-margin-top bg-[#06100d]/90 border-y border-slate-800/80">
+        <div class="max-w-[1350px] mx-auto px-6">
+            
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal reveal-up">
+                <span class="text-xs font-bold tracking-widest text-emerald-400 uppercase">POWERFUL TOOLS</span>
+                <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white mt-2">Everything You Need</h2>
+                <p class="text-slate-400 text-sm mt-2 max-w-xl mx-auto">Professional tools for every type of media</p>
+            </div>
+
+            <!-- CATEGORY 1: IMAGE TOOLS -->
+            <div id="tools-image" class="mb-14 scroll-mt-24 reveal reveal-up cat-wrap cat-image">
+                <div class="cat-glow"></div>
+                <div class="flex items-center gap-3 mb-6 cat-head">
+                    <div class="cat-icon w-10 h-10 rounded-xl bg-emerald-600/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M20.4 14.5 16 10l-6 6"/><path d="m14 14 2-2 4.4 4.4"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="cat-title font-display text-lg font-bold text-white leading-none">Image Tools</h3>
+                        <p class="cat-sub text-xs text-slate-400 mt-1">Perfect your images with professional editing tools</p>
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-6 gap-4 pl-6 cat-grid">
+                    <!-- Image Upscale -->
+                    <a href="/image/upscale" class="tool-card group">
+                        <div class="tool-icon bg-emerald-500/10 text-emerald-400">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m15 9 6-6"/><path d="M21 8V3h-5"/></svg>
+                        </div>
+                        <h3>Image Upscale</h3>
+                        <p>Increase resolution and enhance image quality</p>
+                        <span class="tool-card-link">Try Now <span class="transition-transform group-hover:translate-x-1">&rarr;</span></span>
+                    </a>
+
+                    <!-- Background Remover -->
+                    <a href="/image/bg-removal" class="tool-card group">
+                        <div class="tool-icon bg-sky-500/10 text-sky-400">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/></svg>
+                        </div>
+                        <h3>Background Remover</h3>
+                        <p>Remove backgrounds instantly and accurately</p>
+                        <span class="tool-card-link">Try Now <span class="transition-transform group-hover:translate-x-1">&rarr;</span></span>
+                    </a>
+
+                    <!-- Denoise & Deblur -->
+                    <a href="/image/denoise-deblur" class="tool-card group">
+                        <div class="tool-icon bg-emerald-500/10 text-emerald-400">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                        </div>
+                        <h3>Denoise &amp; Deblur</h3>
+                        <p>Remove noise and blur for clearer images</p>
+                        <span class="tool-card-link">Try Now <span class="transition-transform group-hover:translate-x-1">&rarr;</span></span>
+                    </a>
+
+                    <!-- Magic Eraser -->
+                    <a href="/image/magic-eraser" class="tool-card group">
+                        <div class="tool-icon bg-rose-500/10 text-rose-400">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 21-4-4 11-11 4 4L7 21z"/><path d="m11 7 4 4"/><path d="M19 13l2 2-4 4h-3"/></svg>
+                        </div>
+                        <h3>Magic Eraser</h3>
+                        <p>Remove unwanted objects effortlessly</p>
+                        <span class="tool-card-link">Try Now <span class="transition-transform group-hover:translate-x-1">&rarr;</span></span>
+                    </a>
+
+                    <!-- Old Photo Restore -->
+                    <a href="/image/restore" class="tool-card group">
+                        <div class="tool-icon bg-amber-500/10 text-amber-400">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                        </div>
+                        <h3>Old Photo Restore</h3>
+                        <p>Restore old photos to their former glory</p>
+                        <span class="tool-card-link">Try Now <span class="transition-transform group-hover:translate-x-1">&rarr;</span></span>
+                    </a>
+
+                    <!-- Image Converter -->
+                    <a href="/image/convert" class="tool-card group">
+                        <div class="tool-icon bg-cyan-500/10 text-cyan-400">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h13l-3-3"/><path d="M20 16H7l3 3"/></svg>
+                        </div>
+                        <h3>Image Converter</h3>
+                        <p>Convert images between PNG, JPG, WebP, AVIF, PDF and more</p>
+                        <span class="tool-card-link">Try Now <span class="transition-transform group-hover:translate-x-1">&rarr;</span></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- CATEGORY 2: AUDIO TOOLS -->
+            <div id="tools-audio" class="mb-14 reveal reveal-up cat-wrap cat-audio scroll-margin-top-second">
+                <div class="cat-glow"></div>
+                <div class="flex items-center gap-3 mb-6 cat-head">
+                    <div class="cat-icon w-10 h-10 rounded-xl bg-emerald-600/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="cat-title font-display text-lg font-bold text-white leading-none">Audio Tools</h3>
+                        <p class="cat-sub text-xs text-slate-400 mt-1">Enhance and perfect your audio files</p>
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 pl-6 cat-grid">
+                    <!-- Vocal Remover -->
+                    <a href="/audio/separate" class="tool-card group">
+                        <div class="tool-icon bg-emerald-500/10 text-emerald-400">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+                        </div>
+                        <h3>Vocal Remover</h3>
+                        <p>Remove vocals from any audio track</p>
+                        <span class="tool-card-link">Try Now <span class="transition-transform group-hover:translate-x-1">&rarr;</span></span>
+                    </a>
+
+                    <!-- Noise Remover -->
+                    <a href="/audio/denoise" class="tool-card group">
+                        <div class="tool-icon bg-teal-500/10 text-teal-400">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                        </div>
+                        <h3>Noise Remover</h3>
+                        <p>Eliminate background noise and hiss</p>
+                        <span class="tool-card-link">Try Now <span class="transition-transform group-hover:translate-x-1">&rarr;</span></span>
+                    </a>
+
+                    <!-- Mastering -->
+                    <a href="/audio/mastering" class="tool-card group">
+                        <div class="tool-icon bg-teal-500/10 text-teal-400">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+                        </div>
+                        <h3>Mastering</h3>
+                        <p>Optimize audio for professional quality</p>
+                        <span class="tool-card-link">Try Now <span class="transition-transform group-hover:translate-x-1">&rarr;</span></span>
+                    </a>
+
+                    <!-- Tag Editor -->
+                    <a href="/audio/tags" class="tool-card group">
+                        <div class="tool-icon bg-orange-500/10 text-orange-400">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                        </div>
+                        <h3>Tag Editor</h3>
+                        <p>Edit and organize audio metadata</p>
+                        <span class="tool-card-link">Try Now <span class="transition-transform group-hover:translate-x-1">&rarr;</span></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- CATEGORY 3: VIDEO TOOLS -->
+            <div id="tools-video" class="mb-14 reveal reveal-up cat-wrap cat-video scroll-margin-top-second">
+                <div class="cat-glow"></div>
+                <div class="flex items-center gap-3 mb-6 cat-head">
+                    <div class="cat-icon w-10 h-10 rounded-xl bg-emerald-600/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M10 9l6 3-6 3z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="cat-title font-display text-lg font-bold text-white leading-none">Video Tools</h3>
+                        <p class="cat-sub text-xs text-slate-400 mt-1">Edit and enhance your videos with ease</p>
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 pl-6 cat-grid">
+                    <!-- Video Upscale 4K -->
+                    <a href="/video/upscale" class="tool-card group">
+                        <div class="tool-icon bg-teal-500/10 text-teal-400">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+                        </div>
+                        <h3>Video Upscale 4K</h3>
+                        <p>Increase video resolution up to 4K quality</p>
+                        <span class="tool-card-link">Try Now <span class="transition-transform group-hover:translate-x-1">&rarr;</span></span>
+                    </a>
+
+                    <!-- Video Tools -->
+                    <a href="/video/tools" class="tool-card group">
+                        <div class="tool-icon bg-rose-500/10 text-rose-400">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/></svg>
+                        </div>
+                        <h3>Video Tools</h3>
+                        <p>Trim, crop, merge and more video editing tools</p>
+                        <span class="tool-card-link">Try Now <span class="transition-transform group-hover:translate-x-1">&rarr;</span></span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== CTA BOTTOM ===== -->
+    <section id="report" class="py-20 relative scroll-margin-top">
+        <div class="max-w-[1350px] mx-auto px-6">
+            <div class="report-card rounded-3xl p-12 text-center relative overflow-hidden reveal reveal-scale">
+
+                <!-- Animated Background -->
+                <div class="report-glow report-glow-1"></div>
+                <div class="report-glow report-glow-2"></div>
+                <div class="report-grid"></div>
+
+                <!-- Moving Light -->
+                <div class="report-light"></div>
+
+                <!-- Floating Particles -->
+                <span class="report-particle particle-1"></span>
+                <span class="report-particle particle-2"></span>
+                <span class="report-particle particle-3"></span>
+                <span class="report-particle particle-4"></span>
+                <span class="report-particle particle-5"></span>
+                <span class="report-particle particle-6"></span>
+
+                <!-- Content -->
+                <div class="relative z-10">
+
+                    <span class="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-emerald-300 uppercase">
+                        <span class="report-status-dot"></span>
+                        FOUND A PROBLEM?
+                    </span>
+
+                    <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white mt-4">
+                        Help Us Fix It & Improve Your Experience
+                    </h2>
+
+                    <p class="text-slate-200 text-sm mt-3 max-w-xl mx-auto leading-relaxed">
+                        Encountered a technical glitch, broken link, or unexpected error while navigating our platform? Let our engineering team know what happened and attach a screenshot if possible—we will investigate and resolve it as quickly as possible.
+                    </p>
+
+                    <button type="button" id="report-toggle"
+                        class="report-button inline-flex items-center gap-2 mt-8 px-8 py-3.5 rounded-xl text-white font-medium text-sm">
+
+                        <svg width="16" height="16" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                            <line x1="12" y1="9" x2="12" y2="13"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+
+                        Report an Error
+
+                    </button>
+
+                    <!-- Expandable report form -->
+                    <div id="report-panel" class="report-panel">
+                        <form id="report-form" class="report-form" novalidate>
+
+                            <label for="report-message" class="report-label">Describe the issue</label>
+                            <textarea id="report-message" name="message" rows="4" required
+                                placeholder="What went wrong? Include steps to reproduce if you can..."
+                                class="report-input"></textarea>
+
+                            <label class="report-file" for="report-image">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                                    <path d="M21 15l-5-5L5 21"/>
+                                </svg>
+                                <span id="report-file-name">Attach a screenshot (optional)</span>
+                                <input type="file" id="report-image" name="image"
+                                    accept="image/*" hidden>
+                            </label>
+
+                            <div class="flex flex-wrap items-center justify-between gap-3 mt-5">
+                                <p id="report-status" class="text-xs text-slate-400"></p>
+                                <button type="submit" class="report-submit">Send Report</button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="border-t border-slate-800/80 bg-[#06100d]">
+        <div class="max-w-6xl mx-auto px-6 py-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+            <div>
+                <a href="/" class="flex items-center gap-2 font-bold text-lg text-white">
+                    <span>GeOVI<span class="gnav-logo-accent">Labs</span></span>
+                </a>
+                <p class="text-xs text-slate-400 mt-3 leading-relaxed">Free, open-source AI studio for photos, audio and video. Your files never leave your machine.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold text-xs text-slate-200 uppercase tracking-wider mb-4">Image</h4>
+                <ul class="space-y-2.5 text-xs text-slate-400">
+                    <li><a href="/image/upscale" class="hover:text-emerald-400 transition">Image Upscale</a></li>
+                    <li><a href="/image/bg-removal" class="hover:text-emerald-400 transition">Background Remover</a></li>
+                    <li><a href="/image/denoise-deblur" class="hover:text-emerald-400 transition">Denoise &amp; Deblur</a></li>
+                    <li><a href="/image/magic-eraser" class="hover:text-emerald-400 transition">Magic Eraser</a></li>
+                    <li><a href="/image/restore" class="hover:text-emerald-400 transition">Old Photo Restore</a></li>
+                    <li><a href="/image/convert" class="hover:text-emerald-400 transition">Image Converter</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold text-xs text-slate-200 uppercase tracking-wider mb-4">Audio &amp; Video</h4>
+                <ul class="space-y-2.5 text-xs text-slate-400">
+                    <li><a href="/audio/separate" class="hover:text-emerald-400 transition">Vocal Remover</a></li>
+                    <li><a href="/audio/mastering" class="hover:text-emerald-400 transition">Mastering</a></li>
+                    <li><a href="/video/upscale" class="hover:text-emerald-400 transition">Video Upscale 4K</a></li>
+                    <li><a href="/video/tools" class="hover:text-emerald-400 transition">Video Tools</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold text-xs text-slate-200 uppercase tracking-wider mb-4">Project</h4>
+                <ul class="space-y-2.5 text-xs text-slate-400">
+                    <li><a href="#report" class="hover:text-emerald-400 transition">Report</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-slate-900 py-6 px-6 text-center text-xs text-slate-500">
+            &copy; 2026 GeOVILabs &bull; Built By Khairul Unsa &mdash; Real-ESRGAN, BiRefNet, LaMa, DDColor, SCUNet, NAFNet, GFPGAN, MDX-Net, DeepFilterNet.
+        </div>
+    </footer>
+
+    <script src="/static/js/nav.js"></script>
+    <script>
+    (function() {
+        /* ===== IntersectionObserver: Scroll Reveal (re-trigger setiap masuk viewport) ===== */
+        const revealEls = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window) {
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    const el = e.target;
+                    if (e.isIntersecting) {
+                        /* force reflow agar animasi/transisi tetap bisa di-replay */
+                        void el.offsetWidth;
+                        el.classList.add('is-visible');
+                    } else {
+                        el.classList.remove('is-visible');
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            revealEls.forEach(el => obs.observe(el));
+        } else {
+            revealEls.forEach(el => el.classList.add('is-visible'));
+        }
+
+        /* ===== Hero Particles Generator ===== */
+        const particleContainer = document.querySelector('.hero-particles');
+        if (particleContainer) {
+            const colors = ['rgba(0,208,132,0.6)', 'rgba(52,230,161,0.5)', 'rgba(154,245,207,0.5)', 'rgba(244,63,94,0.4)'];
+            for (let i = 0; i < 18; i++) {
+                const p = document.createElement('div');
+                p.className = 'hero-particle';
+                p.style.left = (Math.random() * 100) + '%';
+                p.style.bottom = (Math.random() * 40) + '%';
+                p.style.background = colors[Math.floor(Math.random() * colors.length)];
+                p.style.animationDuration = (3 + Math.random() * 5) + 's';
+                p.style.animationDelay = (Math.random() * 4) + 's';
+                p.style.width = p.style.height = (2 + Math.random() * 3) + 'px';
+                particleContainer.appendChild(p);
+            }
+        }
+
+        /* ===== Stats Counter Animation (re-trigger) ===== */
+        const statsSection = document.querySelector('.stats-bar-container');
+        if (statsSection) {
+            const counters = statsSection.querySelectorAll('[data-count]');
+            if ('IntersectionObserver' in window) {
+                const statsObs = new IntersectionObserver((entries) => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) {
+                            counters.forEach(el => el.classList.add('stats-number-animate'));
+                        } else {
+                            counters.forEach(el => el.classList.remove('stats-number-animate'));
+                        }
+                    });
+                }, { threshold: 0.3 });
+                statsObs.observe(statsSection);
+            } else {
+                counters.forEach(el => el.classList.add('stats-number-animate'));
+            }
+        }
+    })();
+
+    /* ===== Report Form: expand + submit ===== */
+    (function() {
+        const toggle = document.getElementById('report-toggle');
+        const panel = document.getElementById('report-panel');
+        const form = document.getElementById('report-form');
+        if (!toggle || !panel || !form) return;
+
+        const fileInput = document.getElementById('report-image');
+        const fileName = document.getElementById('report-file-name');
+        const statusEl = document.getElementById('report-status');
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const tokenMeta = document.querySelector('meta[name="ngu-token"]');
+        const token = tokenMeta ? tokenMeta.content : '';
+
+        toggle.addEventListener('click', () => {
+            const open = panel.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            if (open) {
+                setTimeout(() => document.getElementById('report-message').focus(), 350);
+            }
+        });
+
+        if (fileInput && fileName) {
+            fileInput.addEventListener('change', () => {
+                fileName.textContent = fileInput.files.length
+                    ? fileInput.files[0].name
+                    : 'Attach a screenshot (optional)';
+            });
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const message = document.getElementById('report-message').value.trim();
+            if (!message) {
+                statusEl.textContent = 'Please describe the issue first.';
+                statusEl.className = 'text-xs text-rose-300';
+                return;
+            }
+
+            const data = new FormData();
+            data.append('message', message);
+            if (fileInput && fileInput.files.length) {
+                data.append('image', fileInput.files[0]);
+            }
+
+            submitBtn.disabled = true;
+            statusEl.textContent = 'Sending...';
+            statusEl.className = 'text-xs text-slate-300';
+
+            try {
+                const res = await fetch('/api/report', {
+                    method: 'POST',
+                    headers: token ? { 'X-NGU-Token': token } : {},
+                    body: data,
+                });
+                const json = await res.json().catch(() => ({}));
+                if (!res.ok) throw new Error(json.error || 'Failed to send report');
+                form.reset();
+                if (fileName) fileName.textContent = 'Attach a screenshot (optional)';
+                statusEl.textContent = 'Thanks! Your report has been sent.';
+                statusEl.className = 'text-xs text-emerald-300';
+            } catch (err) {
+                statusEl.textContent = err.message || 'Something went wrong.';
+                statusEl.className = 'text-xs text-rose-300';
+            } finally {
+                submitBtn.disabled = false;
+            }
+        });
+    })();
+    </script>
+</body>
+</html>

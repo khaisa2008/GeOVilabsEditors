@@ -1,0 +1,1454 @@
+/* ============================================================
+   GeOViLabs Landing Styling
+   ------------------------------------------------------------
+   Struktur file: setiap SECTION dipisah dengan komentar besar.
+   Di dalam setiap section, CLASSES dan KEYFRAMES dipisahkan
+   dengan komentar pembatas.
+   ============================================================ */
+
+
+/* ============================================================
+   SECTION 1: BASE / GLOBAL  (dipakai semua section)
+   ============================================================ */
+/* --- BASE: Classes --- */
+html { scroll-behavior: smooth; }
+
+body {
+    background-color: #06100d;
+    color: #f8fafc;
+}
+
+.scroll-margin-top {
+    scroll-margin-top: 50px;
+}
+
+.scroll-margin-top-second {
+    scroll-margin-top: 130px;
+}
+
+
+/* ============================================================
+   SHARED BLOCK A: SCROLL REVEAL  (Home, Studio, Blog, CTA)
+   ============================================================ */
+/* --- Shared: Classes --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.reveal-left  { transform: translateX(-50px); }
+.reveal.reveal-right { transform: translateX(50px); }
+.reveal.reveal-scale { transform: scale(0.9); }
+.reveal.reveal-up    { transform: translateY(50px); }
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+}
+
+/* --- Shared: Keyframes --- */
+/* (tidak ada keyframe khusus pada blok ini) */
+
+
+/* ============================================================
+   SHARED BLOCK B: TOOL CARD  (dipakai Image, Audio, Video)
+   ============================================================ */
+/* --- Shared Tool Card: Classes --- */
+.tool-card {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: rgba(12, 25, 21, 0.6);
+    border: 1px solid rgba(26, 50, 38, 0.8);
+    border-radius: 16px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+.tool-card:hover {
+    background: rgba(12, 25, 21, 0.9);
+    border-color: rgba(0, 208, 132, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.5);
+}
+.tool-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+}
+.tool-card h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+.tool-card p {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #94a3b8;
+    flex: 1;
+    margin-bottom: 16px;
+}
+.tool-card-link {
+    font-size: 12px;
+    font-weight: 600;
+    color: #9af5cf;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* --- Shared Tool Card: Responsive (mobile) --- */
+@media (max-width: 640px) {
+    .tool-card { padding: 16px; }
+    .tool-card h3 { font-size: 13px; }
+    .tool-card p { font-size: 11px; margin-bottom: 12px; }
+    .tool-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+/* --- Shared Tool Card: Keyframes --- */
+/* (tidak ada keyframe khusus pada blok ini) */
+
+
+/* ============================================================
+   SECTION 2: HOME  (#home — Hero + Stats Bar)
+   ============================================================ */
+/* ============================================================
+   HOME — CLASSES
+   ============================================================ */
+
+/* --- Background Glow Effects --- */
+.hero-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 1;
+}
+.hero-glow-1 { width: 500px; height: 500px; top: -100px; left: -100px; background: rgba(0, 208, 132, 0.18); }
+.hero-glow-2 { width: 500px; height: 500px; top: 100px; right: -100px; background: rgba(0, 208, 132, 0.12); }
+
+/* --- Layout & Spacing (#home) --- */
+#home {
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
+}
+@media (min-width: 1024px) {
+    #home {
+        padding-top: 3rem;
+        padding-bottom: 5rem;
+    }
+}
+#home > .max-w-\[1350px\].grid { gap: 1.5rem; }
+@media (min-width: 1024px) {
+    #home > .max-w-\[1350px\].grid { gap: 3rem; }
+}
+@media (max-width: 640px) {
+    #home h1 { font-size: 2rem; }
+    #home .leading-relaxed { font-size: 0.9rem; }
+}
+
+/* --- Hero: Glass/Neon Animation Wrappers --- */
+.animate-float-slow   { animation: floatSlow 5s ease-in-out infinite; }
+.animate-float-delayed { animation: floatDelayed 6s ease-in-out 1s infinite; }
+.animate-pulse-slow   { animation: pulseGlow 4s ease-in-out infinite; }
+
+.neon-sidebar-card {
+    border: 1px solid rgba(52, 230, 161, 0.4); /* Cyan border */
+    box-shadow: 0 0 15px rgba(52, 230, 161, 0.3);
+}
+.neon-sidebar-card:hover {
+    box-shadow: 0 0 25px rgba(52, 230, 161, 0.6);
+    border-color: rgba(52, 230, 161, 0.8);
+}
+.neon-bottom-bar {
+    filter:
+        drop-shadow(0 0 8px rgba(52, 230, 161, 0.5))
+        drop-shadow(0 0 16px rgba(52, 230, 161, 0.25));
+}
+
+/* --- Hero: Decorative Background (Orbs / Rings / Particles / Lines) --- */
+.hero-deco-orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    will-change: transform;
+}
+.hero-deco-orb-1 {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(0, 208, 132, 0.25) 0%, transparent 70%);
+    top: -40px;
+    right: -30px;
+    animation: orbFloat1 8s ease-in-out infinite;
+}
+.hero-deco-orb-2 {
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(52, 230, 161, 0.2) 0%, transparent 70%);
+    bottom: 20px;
+    left: -20px;
+    animation: orbFloat2 10s ease-in-out infinite;
+}
+.hero-deco-orb-3 {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(52, 230, 161, 0.2) 0%, transparent 70%);
+    top: 50%;
+    right: 10%;
+    animation: orbFloat3 7s ease-in-out infinite;
+}
+
+.hero-orbit-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid;
+    pointer-events: none;
+    will-change: transform;
+}
+.hero-orbit-ring-1 {
+    width: 340px;
+    height: 340px;
+    top: 50%;
+    left: 50%;
+    margin-top: -170px;
+    margin-left: -170px;
+    border-color: rgba(0, 208, 132, 0.08);
+    animation: orbitSpin 20s linear infinite;
+}
+.hero-orbit-ring-2 {
+    width: 260px;
+    height: 260px;
+    top: 50%;
+    left: 50%;
+    margin-top: -130px;
+    margin-left: -130px;
+    border-color: rgba(52, 230, 161, 0.06);
+    animation: orbitSpinReverse 15s linear infinite;
+}
+.hero-orbit-dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    top: -3px;
+    left: 50%;
+    margin-left: -3px;
+}
+
+.hero-particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: particleDrift linear infinite;
+}
+
+.hero-grid-lines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+.hero-grid-lines::before,
+.hero-grid-lines::after {
+    content: '';
+    position: absolute;
+    background: rgba(0, 208, 132, 0.05);
+    animation: gridLinePulse 4s ease-in-out infinite;
+}
+.hero-grid-lines::before {
+    width: 1px;
+    height: 100%;
+    left: 33%;
+}
+.hero-grid-lines::after {
+    width: 100%;
+    height: 1px;
+    top: 40%;
+}
+
+.hero-shimmer-line {
+    position: absolute;
+    height: 1px;
+    width: 120px;
+    background: linear-gradient(90deg, transparent, rgba(0, 208, 132, 0.4), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* --- Hero: Stats Bar --- */
+.stats-bar-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+@media (min-width: 768px) {
+    .stats-bar-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+}
+.stats-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 0;
+}
+@media (min-width: 768px) {
+    .stats-bar-item {
+        justify-content: center;
+    }
+}
+.stats-bar-item .stats-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.stats-bar-item h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+}
+.stats-bar-item p {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 2px;
+}
+.stats-number-animate {
+    animation: countUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* --- Hero: Responsive (mobile) --- */
+@media (max-width: 1023px) {
+    .hero-visual-wrapper {
+        perspective: none;
+    }
+}
+/* Kecilkan glow di layar kecil agar tidak mendominasi */
+@media (max-width: 1023px) {
+    .hero-glow-1,
+    .hero-glow-2 {
+        width: 300px;
+        height: 300px;
+        filter: blur(90px);
+    }
+    .hero-glow-1 {
+        top: -60px;
+        left: -80px;
+    }
+    .hero-glow-2 {
+        top: 40px;
+        right: -80px;
+    }
+}
+/* Right Hero Visual Card — responsive mobile */
+@media (max-width: 640px) {
+    /* Matikan tilt 3D agar tidak aneh di layar kecil */
+    .hero-visual-wrapper > .relative.transition-transform {
+        transform: none !important;
+    }
+    .hero-visual-wrapper > .relative.transition-transform .hero-deco-orb,
+    .hero-visual-wrapper > .relative.transition-transform .hero-orbit-ring {
+        /* Biarkan dekorasi tetap ada, hanya pastikan tidak overflow */
+        max-width: 100%;
+    }
+
+    /* Window Header Dots — Lebih Kecil */
+    .hero-window-dots {
+        gap: 0.5rem;
+        padding-bottom: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+    .hero-window-dots .hero-dot {
+        width: 8px;
+        height: 8px;
+        box-shadow: 0 0 6px;
+    }
+
+    /* Card Image / Audio / Video (hero sidebar) — Lebih Kecil */
+    .hero-tool-card {
+        gap: 0.5rem;
+        padding: 0.375rem 0.5rem;
+        border-radius: 10px;
+    }
+    .hero-tool-card > div {
+        padding: 0.25rem;
+        border-radius: 8px;
+    }
+    .hero-tool-card svg {
+        width: 13px;
+        height: 13px;
+    }
+    .hero-tool-card span {
+        font-size: 0.68rem;
+    }
+
+    /* Floating Sidebar — jaga jangan keluar layar */
+    .hero-floating-sidebar {
+        left: -0.375rem;
+        top: 3rem;
+    }
+
+    /* Floating Bottom Tools Bar — Sedikit Lebih Besar */
+    .hero-bottom-bar {
+        left: 1rem;
+        right: 1rem;
+    }
+    .hero-bottom-bar-img {
+        transform: scale(1.15);
+    }
+}
+/* Stats Bar mobile — pastikan tidak terlalu mepet */
+@media (max-width: 640px) {
+    .stats-bar-container {
+        padding: 1rem;
+    }
+    .stats-bar-grid {
+        gap: 1rem;
+        row-gap: 1.25rem;
+    }
+    .stats-bar-item {
+        gap: 0.75rem;
+        padding: 0.5rem 0;
+    }
+    .stats-bar-item .stats-icon {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        border-radius: 10px;
+    }
+    .stats-bar-item .stats-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+    .stats-bar-item h3 {
+        font-size: 1.15rem;
+    }
+    .stats-bar-item p {
+        font-size: 0.65rem;
+    }
+}
+
+/* ============================================================
+   HOME — ENTRANCE ANIMATIONS (per component, on section reveal)
+   Trigger: .home-hero-left / .home-hero-right / .home-stats
+   mendapat .is-visible dari IntersectionObserver.
+   ============================================================ */
+
+/* --- Left Content: BADGE (pills) --- */
+.home-hero-left.is-visible .home-badge {
+    animation: homeBadgeIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s backwards;
+}
+
+/* --- Left Content: TITLE (line-by-line masquerade reveal) --- */
+.home-title .home-line {
+    display: block;
+    overflow: hidden;
+}
+.home-title .home-line > span {
+    display: block;
+    transform: translateY(115%);
+    transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.home-hero-left.is-visible .home-line:nth-child(1) > span {
+    transform: translateY(0);
+    transition-delay: 0.28s;
+}
+.home-hero-left.is-visible .home-line:nth-child(2) > span {
+    transform: translateY(0);
+    transition-delay: 0.42s;
+}
+
+/* Kata "Media" dengan gradien berkilau */
+.home-media {
+    background: linear-gradient(90deg, #00d084, #34e6a1, #9af5cf, #00d084);
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: homeMediaShine 4s linear infinite;
+    animation-delay: 1.2s;
+}
+
+/* --- Left Content: PARAGRAPH (fade-up) --- */
+.home-hero-left.is-visible .home-sub {
+    animation: homeFadeUp 0.8s ease-out 0.55s backwards;
+}
+
+/* --- Left Content: CTA BUTTONS (stagger pop-up) --- */
+.home-hero-left.is-visible .home-cta .home-cta-btn {
+    animation: homeCtaIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.68s backwards;
+}
+.home-hero-left.is-visible .home-cta .home-cta-secondary {
+    animation: homeCtaIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s backwards;
+}
+
+/* --- Left Content: TRUST BADGES (stagger pop) --- */
+.home-hero-left.is-visible .home-badge-item {
+    animation: homeBadgePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+.home-hero-left.is-visible .home-badge-item:nth-child(1) { animation-delay: 0.92s; }
+.home-hero-left.is-visible .home-badge-item:nth-child(2) { animation-delay: 1.02s; }
+.home-hero-left.is-visible .home-badge-item:nth-child(3) { animation-delay: 1.12s; }
+.home-hero-left.is-visible .home-badge-item:nth-child(4) { animation-delay: 1.22s; }
+
+/* --- Right Content: DECORATIVE BACKGROUND (fade-in; kombinasi dgn animasi perpetual) --- */
+.home-hero-right.is-visible .hero-grid-lines {
+    animation: homeFadeIn 1s ease-out 0.1s backwards;
+}
+.home-hero-right.is-visible .hero-deco-orb-1 {
+    animation: homeFadeIn 0.9s ease-out 0.25s backwards, orbFloat1 8s ease-in-out infinite;
+}
+.home-hero-right.is-visible .hero-deco-orb-2 {
+    animation: homeFadeIn 0.9s ease-out 0.35s backwards, orbFloat2 10s ease-in-out infinite;
+}
+.home-hero-right.is-visible .hero-deco-orb-3 {
+    animation: homeFadeIn 0.9s ease-out 0.45s backwards, orbFloat3 7s ease-in-out infinite;
+}
+.home-hero-right.is-visible .hero-orbit-ring-1 {
+    opacity: 1;
+    animation: homeFadeIn 1.1s ease-out 0.4s backwards, orbitSpin 20s linear infinite;
+}
+.home-hero-right.is-visible .hero-orbit-ring-2 {
+    opacity: 1;
+    animation: homeFadeIn 1.1s ease-out 0.55s backwards, orbitSpinReverse 15s linear infinite;
+}
+.home-hero-right.is-visible .hero-orbit-dot {
+    animation: homeFadeIn 0.8s ease-out 0.8s backwards;
+}
+.home-hero-right.is-visible .hero-shimmer-line {
+    animation: homeFadeIn 0.8s ease-out 0.6s backwards, shimmer 3s ease-in-out infinite;
+}
+
+/* --- Right Content: MAIN WINDOW (3D drop-in, desktop only) --- */
+@media (min-width: 641px) {
+    .home-hero-right.is-visible .hero-window-entry {
+        animation: homeWindowEntry 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.3s backwards;
+    }
+}
+
+/* --- Right Content: WINDOW DOTS (stagger pop) --- */
+.home-hero-right.is-visible .hero-window-dots .hero-dot {
+    animation: homeDotPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+.home-hero-right.is-visible .hero-window-dots .hero-dot:nth-child(1) { animation-delay: 0.4s; }
+.home-hero-right.is-visible .hero-window-dots .hero-dot:nth-child(2) { animation-delay: 0.5s; }
+.home-hero-right.is-visible .hero-window-dots .hero-dot:nth-child(3) { animation-delay: 0.6s; }
+
+/* --- Right Content: CANVAS / IMAGE PREVIEW (smooth zoom) --- */
+.home-hero-right.is-visible .hero-canvas-img {
+    animation: homeCanvasZoom 1s ease-out 0.75s backwards;
+}
+
+/* --- Right Content: FLOATING SIDEBAR TOOL CARDS (slide-in left) --- */
+.home-hero-right.is-visible .hero-tool-card {
+    animation: homeToolSlide 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+.home-hero-right.is-visible .hero-tool-card:nth-child(1) { animation-delay: 0.5s; }
+.home-hero-right.is-visible .hero-tool-card:nth-child(2) { animation-delay: 0.62s; }
+.home-hero-right.is-visible .hero-tool-card:nth-child(3) { animation-delay: 0.74s; }
+
+/* --- Right Content: FLOATING BOTTOM TOOLS BAR (rise-up) --- */
+.home-hero-right.is-visible .hero-bottom-bar {
+    animation: homeBarRise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.85s backwards;
+}
+
+/* --- STATS BAR (container rise + item stagger pop) --- */
+.home-stats.is-visible .stats-bar-container {
+    animation: homeFadeUp 0.8s ease-out 0.1s backwards;
+}
+.home-stats.is-visible .stats-bar-item {
+    animation: homeStatPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+.home-stats.is-visible .stats-bar-item:nth-child(1) { animation-delay: 0.45s; }
+.home-stats.is-visible .stats-bar-item:nth-child(2) { animation-delay: 0.6s; }
+.home-stats.is-visible .stats-bar-item:nth-child(3) { animation-delay: 0.75s; }
+.home-stats.is-visible .stats-bar-item:nth-child(4) { animation-delay: 0.9s; }
+.home-stats.is-visible .stats-bar-item .stats-icon {
+    animation: homeIconBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+.home-stats.is-visible .stats-bar-item:nth-child(1) .stats-icon { animation-delay: 0.5s; }
+.home-stats.is-visible .stats-bar-item:nth-child(2) .stats-icon { animation-delay: 0.65s; }
+.home-stats.is-visible .stats-bar-item:nth-child(3) .stats-icon { animation-delay: 0.8s; }
+.home-stats.is-visible .stats-bar-item:nth-child(4) .stats-icon { animation-delay: 0.95s; }
+
+/* --- Aksesibilitas: hormati prefers-reduced-motion --- */
+@media (prefers-reduced-motion: reduce) {
+    /* Tampilkan elemen reveal tanpa animasi */
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    /* Matikan semua entrance animation anak */
+    .home-hero-left.is-visible *,
+    .home-hero-right.is-visible *,
+    .home-stats.is-visible *,
+    .cat-wrap.is-visible * {
+        animation: none !important;
+        transition: none !important;
+    }
+    .home-title .home-line > span {
+        transform: none;
+    }
+}
+
+
+/* ============================================================
+   HOME — KEYFRAMES
+   ============================================================ */
+/* --- FLOAT: animasi mengambang pada elemen hero --- */
+@keyframes floatSlow {
+    0%, 100% {
+        transform: translateY(0px) translateZ(50px);
+    }
+    50% {
+        transform: translateY(-8px) translateZ(50px);
+    }
+}
+@keyframes floatDelayed {
+    0%, 100% {
+        transform: translateY(0px) translateZ(80px);
+    }
+    50% {
+        transform: translateY(8px) translateZ(80px);
+    }
+}
+
+/* --- NEON: denyut cahaya neon pada border --- */
+@keyframes neonPulse {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(0, 208, 132, 0.4), 0 0 30px rgba(0, 208, 132, 0.2);
+        border-color: rgba(0, 208, 132, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(0, 208, 132, 0.8), 0 0 50px rgba(0, 208, 132, 0.4);
+        border-color: rgba(0, 208, 132, 0.8);
+    }
+}
+
+/* --- GLOW: denyut cahaya pada background glow --- */
+@keyframes pulseGlow {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1) translateZ(0);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.1) translateZ(0);
+    }
+}
+
+/* --- ORB: pergerakan bola cahaya dekoratif --- */
+@keyframes orbFloat1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(30px, -20px) scale(1.05); }
+    50% { transform: translate(-10px, -35px) scale(0.95); }
+    75% { transform: translate(-25px, 10px) scale(1.02); }
+}
+@keyframes orbFloat2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-20px, 25px) scale(1.08); }
+    50% { transform: translate(15px, 10px) scale(0.92); }
+    75% { transform: translate(25px, -15px) scale(1.04); }
+}
+@keyframes orbFloat3 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(20px, -30px) rotate(120deg); }
+    66% { transform: translate(-15px, 20px) rotate(240deg); }
+}
+
+/* --- ORBIT: rotasi ring melingkar --- */
+@keyframes orbitSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+@keyframes orbitSpinReverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+
+/* --- PARTICLE: partikel melayang naik --- */
+@keyframes particleDrift {
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-120px) translateX(30px); opacity: 0; }
+}
+
+/* --- GRID LINE: denyut garis grid dekoratif --- */
+@keyframes gridLinePulse {
+    0%, 100% { opacity: 0.03; }
+    50% { opacity: 0.08; }
+}
+
+/* --- SHIMMER: garis cahaya menyapu --- */
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* --- COUNTER: angka statistik naik --- */
+@keyframes countUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- ENTRANCE: Keyboard animasi masuk per komponen Home --- */
+@keyframes homeBadgeIn {
+    from { opacity: 0; transform: translateY(-14px) scale(0.6); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes homeMediaShine {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+@keyframes homeFadeUp {
+    from { opacity: 0; transform: translateY(26px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes homeCtaIn {
+    from { opacity: 0; transform: translateY(22px) scale(0.85); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes homeBadgePop {
+    0% { opacity: 0; transform: scale(0.4) rotate(-6deg); }
+    60% { opacity: 1; transform: scale(1.12) rotate(2deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+@keyframes homeFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes homeWindowEntry {
+    0% { opacity: 0; transform: translateY(40px) rotateY(28deg) rotateX(14deg) scale(0.92); }
+    60% { opacity: 1; transform: translateY(-6px) rotateY(-8deg) rotateX(4deg) scale(1.01); }
+    100% { opacity: 1; transform: translateY(0) rotateY(-10deg) rotateX(5deg) scale(1); }
+}
+@keyframes homeDotPop {
+    0% { opacity: 0; transform: scale(0); }
+    70% { opacity: 1; transform: scale(1.35); }
+    100% { opacity: 1; transform: scale(1); }
+}
+@keyframes homeCanvasZoom {
+    from { opacity: 0; transform: scale(1.12); }
+    to { opacity: 1; transform: scale(1); }
+}
+@keyframes homeToolSlide {
+    from { opacity: 0; transform: translateX(-40px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+@keyframes homeBarRise {
+    from { opacity: 0; transform: translateY(38px) translateZ(80px); }
+    to { opacity: 1; transform: translateY(0) translateZ(80px); }
+}
+@keyframes homeStatPop {
+    0% { opacity: 0; transform: translateY(20px) scale(0.9); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes homeIconBounce {
+    0% { opacity: 0; transform: scale(0) rotate(-18deg); }
+    65% { opacity: 1; transform: scale(1.2) rotate(6deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+
+/* ============================================================
+   SHARED BLOCK C: TOOL CATEGORY HEADERS  (Image, Audio, Video)
+   ============================================================ */
+/* --- Shared Category: Classes --- */
+.cat-wrap { position: relative; }
+
+.cat-glow {
+    position: absolute;
+    top: -50px;
+    right: 5%;
+    width: 420px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+    opacity: 0.12;
+    z-index: 0;
+}
+.cat-image .cat-glow { background: radial-gradient(circle, rgba(0, 208, 132, 0.6), transparent 70%); }
+.cat-audio  .cat-glow { background: radial-gradient(circle, rgba(52, 230, 161, 0.6), transparent 70%); }
+.cat-video  .cat-glow { background: radial-gradient(circle, rgba(244, 63, 94, 0.55), transparent 70%); }
+
+/* Letakkan header & grid di atas glow */
+.cat-head, .cat-grid { position: relative; z-index: 1; }
+
+/* --- Shared Category: Entrance (di-trigger saat .is-visible) --- */
+.cat-wrap.is-visible .cat-glow {
+    animation: catGlowIn 1.2s ease-out 0.1s backwards;
+}
+.cat-wrap.is-visible .cat-icon {
+    animation: catIconIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s backwards;
+}
+.cat-wrap.is-visible .cat-title {
+    animation: catTitleIn 0.6s ease-out 0.2s backwards;
+}
+.cat-wrap.is-visible .cat-sub {
+    animation: catTitleIn 0.6s ease-out 0.28s backwards;
+}
+
+/* --- Shared Category: Keyframes --- */
+@keyframes catGlowIn {
+    from { opacity: 0; transform: scale(0.7); }
+    to { opacity: 0.12; transform: scale(1); }
+}
+@keyframes catIconIn {
+    from { opacity: 0; transform: translateY(-16px) scale(0.4) rotate(-12deg); }
+    to { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+}
+@keyframes catTitleIn {
+    from { opacity: 0; transform: translateX(-24px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+@keyframes toolIconPop {
+    0% { opacity: 0; transform: scale(0.2) rotate(-20deg); }
+    70% { opacity: 1; transform: scale(1.25) rotate(6deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+
+/* ============================================================
+   SECTION 3: IMAGE TOOLS
+   ============================================================ */
+/* ============================================================
+   IMAGE — CLASSES
+   ============================================================ */
+/* Entrance kartu: tumbuh dari bawah dengan pantulan halus */
+.cat-image.is-visible .tool-card {
+    animation: imageCardRise 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+.cat-image.is-visible .tool-card:nth-child(1) { animation-delay: 0.2s; }
+.cat-image.is-visible .tool-card:nth-child(2) { animation-delay: 0.32s; }
+.cat-image.is-visible .tool-card:nth-child(3) { animation-delay: 0.44s; }
+.cat-image.is-visible .tool-card:nth-child(4) { animation-delay: 0.56s; }
+.cat-image.is-visible .tool-card:nth-child(5) { animation-delay: 0.68s; }
+.cat-image.is-visible .tool-card:nth-child(6) { animation-delay: 0.8s; }
+
+/* Ikon dalam kartu muncul setelah kartunya */
+.cat-image.is-visible .tool-card .tool-icon {
+    animation: toolIconPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+.cat-image.is-visible .tool-card:nth-child(1) .tool-icon { animation-delay: 0.34s; }
+.cat-image.is-visible .tool-card:nth-child(2) .tool-icon { animation-delay: 0.46s; }
+.cat-image.is-visible .tool-card:nth-child(3) .tool-icon { animation-delay: 0.58s; }
+.cat-image.is-visible .tool-card:nth-child(4) .tool-icon { animation-delay: 0.7s; }
+.cat-image.is-visible .tool-card:nth-child(5) .tool-icon { animation-delay: 0.82s; }
+.cat-image.is-visible .tool-card:nth-child(6) .tool-icon { animation-delay: 0.94s; }
+
+/* Efek hover ikon sesuai tema warna */
+.cat-image .tool-card:hover .tool-icon {
+    background: rgba(0, 208, 132, 0.18);
+    transform: scale(1.1) rotate(-4deg);
+    transition: transform 0.25s ease, background 0.25s ease;
+}
+
+/* ============================================================
+   IMAGE — KEYFRAMES
+   ============================================================ */
+@keyframes imageCardRise {
+    0% { opacity: 0; transform: translateY(46px) scale(0.94); }
+    60% { opacity: 1; transform: translateY(-6px) scale(1.02); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+
+/* ============================================================
+   SECTION 4: AUDIO TOOLS
+   ============================================================ */
+/* ============================================================
+   AUDIO — CLASSES
+   ============================================================ */
+/* Entrance kartu: meluncur dari kanan dengan sedikit rotasi 3D */
+.cat-audio.is-visible .tool-card {
+    animation: audioCardSwing 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+.cat-audio.is-visible .tool-card:nth-child(1) { animation-delay: 0.2s; }
+.cat-audio.is-visible .tool-card:nth-child(2) { animation-delay: 0.32s; }
+.cat-audio.is-visible .tool-card:nth-child(3) { animation-delay: 0.44s; }
+.cat-audio.is-visible .tool-card:nth-child(4) { animation-delay: 0.56s; }
+
+/* Ikon muncul dengan denyut */
+.cat-audio.is-visible .tool-card .tool-icon {
+    animation: toolIconPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+.cat-audio.is-visible .tool-card:nth-child(1) .tool-icon { animation-delay: 0.34s; }
+.cat-audio.is-visible .tool-card:nth-child(2) .tool-icon { animation-delay: 0.46s; }
+.cat-audio.is-visible .tool-card:nth-child(3) .tool-icon { animation-delay: 0.58s; }
+.cat-audio.is-visible .tool-card:nth-child(4) .tool-icon { animation-delay: 0.7s; }
+
+/* Efek hover ikon sesuai tema warna */
+.cat-audio .tool-card:hover .tool-icon {
+    background: rgba(52, 230, 161, 0.18);
+    transform: scale(1.1) rotate(4deg);
+    transition: transform 0.25s ease, background 0.25s ease;
+}
+
+/* ============================================================
+   AUDIO — KEYFRAMES
+   ============================================================ */
+@keyframes audioCardSwing {
+    0% { opacity: 0; transform: translateX(60px) rotateY(-12deg); }
+    100% { opacity: 1; transform: translateX(0) rotateY(0deg); }
+}
+
+
+/* ============================================================
+   SECTION 5: VIDEO TOOLS
+   ============================================================ */
+/* ============================================================
+   VIDEO — CLASSES
+   ============================================================ */
+/* Entrance kartu: naik dengan efek focus (blur → tajam) */
+.cat-video.is-visible .tool-card {
+    animation: videoCardFocus 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+.cat-video.is-visible .tool-card:nth-child(1) { animation-delay: 0.2s; }
+.cat-video.is-visible .tool-card:nth-child(2) { animation-delay: 0.34s; }
+
+/* Ikon muncul dengan denyut */
+.cat-video.is-visible .tool-card .tool-icon {
+    animation: toolIconPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+.cat-video.is-visible .tool-card:nth-child(1) .tool-icon { animation-delay: 0.34s; }
+.cat-video.is-visible .tool-card:nth-child(2) .tool-icon { animation-delay: 0.48s; }
+
+/* Efek hover ikon sesuai tema warna */
+.cat-video .tool-card:hover .tool-icon {
+    background: rgba(244, 63, 94, 0.18);
+    transform: scale(1.1);
+    transition: transform 0.25s ease, background 0.25s ease;
+}
+
+/* ============================================================
+   VIDEO — KEYFRAMES
+   ============================================================ */
+@keyframes videoCardFocus {
+    0% { opacity: 0; transform: translateY(36px) scale(0.85); filter: blur(8px); }
+    60% { opacity: 1; filter: blur(0px); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+
+/* ============================================================
+   SECTION 6: MOBILE / RESPONSIVE TWEAKS (Image, Audio, Video)
+   ============================================================ */
+/* Card tool kategori — pastikan glow tidak overflow di layar kecil */
+@media (max-width: 640px) {
+    .cat-glow {
+        width: 240px;
+        height: 180px;
+        top: -20px;
+        right: -40px;
+    }
+    .cat-head {
+        gap: 0.75rem;
+    }
+    .cat-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+    }
+    .cat-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* =========================================================
+   GEOVILABS - FUTURISTIC CTA CARD
+   ========================================================= */
+
+.report-card {
+    position: relative;
+    isolation: isolate;
+    background:
+        linear-gradient(
+            120deg,
+            rgba(0, 208, 132, 0.35),
+            rgba(0, 208, 132, 0.42),
+            rgba(52, 230, 161, 0.25),
+            rgba(0, 208, 132, 0.42),
+            rgba(0, 208, 132, 0.35)
+        );
+    background-size: 400% 400%;
+    border: 1px solid rgba(0, 208, 132, 0.4);
+    animation: reportGradient 10s ease infinite;
+    box-shadow:
+        0 0 40px rgba(0, 208, 132, 0.08),
+        inset 0 0 50px rgba(0, 208, 132, 0.08);
+}
+
+/* Gradient movement */
+@keyframes reportGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    25% {
+        background-position: 100% 30%;
+    }
+
+    50% {
+        background-position: 100% 80%;
+    }
+
+    75% {
+        background-position: 0% 70%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* =========================================================
+   GLOW ORBS
+   ========================================================= */
+
+.report-glow {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    filter: blur(70px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.report-glow-1 {
+    top: -150px;
+    left: -80px;
+    background: rgba(0, 208, 132, 0.45);
+    animation: orbFloat1 7s ease-in-out infinite;
+}
+
+.report-glow-2 {
+    bottom: -160px;
+    right: -70px;
+    background: rgba(52, 230, 161, 0.45);
+    animation: orbFloat2 9s ease-in-out infinite;
+}
+
+@keyframes orbFloat1 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(100px, 80px) scale(1.25);
+    }
+}
+
+@keyframes orbFloat2 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(-100px, -70px) scale(1.2);
+    }
+}
+
+
+/* =========================================================
+   FUTURISTIC GRID
+   ========================================================= */
+
+.report-grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.13;
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px);
+
+    background-size: 45px 45px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        black 25%,
+        black 75%,
+        transparent
+    );
+
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        black 25%,
+        black 75%,
+        transparent
+    );
+
+    animation: gridMove 12s linear infinite;
+}
+
+@keyframes gridMove {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 45px 45px;
+    }
+}
+
+
+/* =========================================================
+   MOVING LIGHT
+   ========================================================= */
+
+.report-light {
+    position: absolute;
+    top: -30%;
+    left: -20%;
+    width: 25%;
+    height: 160%;
+    pointer-events: none;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.12),
+        rgba(52, 230, 161,0.18),
+        rgba(255,255,255,0.12),
+        transparent
+    );
+
+    filter: blur(12px);
+    transform: rotate(15deg);
+
+    animation: reportLightMove 6s ease-in-out infinite;
+}
+
+@keyframes reportLightMove {
+    0% {
+        left: -30%;
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    55% {
+        opacity: 0.8;
+    }
+
+    100% {
+        left: 120%;
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   FLOATING PARTICLES
+   ========================================================= */
+
+.report-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #9af5cf;
+    box-shadow: 0 0 12px #34e6a1;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.particle-1 {
+    left: 12%;
+    bottom: 20%;
+    animation: particleFloat 5s ease-in-out infinite;
+}
+
+.particle-2 {
+    left: 25%;
+    top: 22%;
+    animation: particleFloat 7s ease-in-out infinite 1s;
+}
+
+.particle-3 {
+    left: 72%;
+    top: 18%;
+    animation: particleFloat 6s ease-in-out infinite 2s;
+}
+
+.particle-4 {
+    right: 12%;
+    bottom: 25%;
+    animation: particleFloat 8s ease-in-out infinite 1.5s;
+}
+
+.particle-5 {
+    left: 55%;
+    bottom: 15%;
+    animation: particleFloat 6s ease-in-out infinite 3s;
+}
+
+.particle-6 {
+    right: 30%;
+    top: 28%;
+    animation: particleFloat 7s ease-in-out infinite 2.5s;
+}
+
+@keyframes particleFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translateY(-25px) scale(1.5);
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   STATUS DOT
+   ========================================================= */
+
+.report-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #34e6a1;
+    box-shadow:
+        0 0 6px #34e6a1,
+        0 0 14px #34e6a1;
+
+    animation: statusPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.report-button {
+    position: relative;
+    overflow: hidden;
+
+    background: linear-gradient(
+        135deg,
+        #34e6a1,
+        #00d084,
+        #00a866
+    );
+
+    background-size: 200% 200%;
+
+    box-shadow:
+        0 10px 30px rgba(0, 208, 132, 0.35),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    
+    animation: buttonGradient 4s ease infinite;
+}
+
+.report-button:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 15px 40px rgba(0, 208, 132, 0.5),
+        0 0 25px rgba(0, 208, 132, 0.25);
+}
+
+@keyframes buttonGradient {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+
+/* =========================================================
+   BUTTON SHINE
+   ========================================================= */
+
+.report-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.35),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+    animation: buttonShine 4s ease-in-out infinite;
+}
+
+@keyframes buttonShine {
+    0% {
+        left: -100%;
+    }
+
+    45%, 100% {
+        left: 150%;
+    }
+}
+
+
+/* =========================================================
+   REPORT FORM (expandable)
+   ========================================================= */
+
+.report-panel {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+        max-height 0.5s ease,
+        opacity 0.4s ease,
+        margin-top 0.4s ease;
+}
+
+.report-panel.open {
+    max-height: 720px;
+    opacity: 1;
+    margin-top: 2rem;
+}
+
+.report-form {
+    background: rgba(3, 7, 18, 0.45);
+    border: 1px solid rgba(0, 208, 132, 0.25);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    backdrop-filter: blur(8px);
+    max-width: 560px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.report-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6ee7b7;
+    margin-bottom: 0.5rem;
+}
+
+.report-input {
+    width: 100%;
+    background: rgba(2, 6, 23, 0.6);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: #e2e8f0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    resize: vertical;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.report-input::placeholder {
+    color: #64748b;
+}
+
+.report-input:focus {
+    outline: none;
+    border-color: rgba(52, 230, 161, 0.6);
+    box-shadow: 0 0 0 3px rgba(52, 230, 161, 0.15);
+}
+
+.report-file {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 0.9rem;
+    padding: 0.75rem 1rem;
+    border: 1px dashed rgba(148, 163, 184, 0.35);
+    border-radius: 0.75rem;
+    color: #94a3b8;
+    font-size: 0.8rem;
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.report-file:hover {
+    border-color: rgba(52, 230, 161, 0.5);
+    color: #d1fae5;
+}
+
+.report-file span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.report-submit {
+    background: linear-gradient(135deg, #34e6a1, #00d084);
+    color: #04120c;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.65rem 1.5rem;
+    border-radius: 0.7rem;
+    box-shadow: 0 8px 22px rgba(0, 208, 132, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.report-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0, 208, 132, 0.4);
+}
+
+.report-submit:disabled {
+    opacity: 0.6;
+    cursor: wait;
+    transform: none;
+}

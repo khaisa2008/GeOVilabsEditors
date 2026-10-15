@@ -1,0 +1,39 @@
+<nav class="gnav" id="gnav">
+    <div class="gnav-inner">
+        <!-- Logo -->
+        <a class="gnav-logo" href="/">
+            <img src="../../static/logo.png" alt="GOVLogo" width="40" height="40">
+            <span>GeOVI<span class="gnav-logo-accent">Labs</span></span>
+        </a>
+
+        <!-- Middle Links Container -->
+        <div class="gnav-center">
+            <div class="gnav-links" id="gnav-links">
+                <a class="gnav-link {% if active == 'home' %}gnav-active{% endif %}" href="/#home" data-section="home">Home</a>
+                <a class="gnav-link {% if active == 'image' %}gnav-active{% endif %}" href="/#studio" data-section="studio">Image</a>
+                <a class="gnav-link {% if active == 'audio' %}gnav-active{% endif %}" href="/#tools-audio" data-section="tools-audio">Audio</a>
+                <a class="gnav-link {% if active == 'video' %}gnav-active{% endif %}" href="/#tools-video" data-section="tools-video">Video</a>
+                <a class="gnav-link {% if active == 'report' %}gnav-active{% endif %}" href="/#report" data-section="report">Report</a>
+                
+                <!-- Indikator Berjalan (Sliding Line) -->
+                <div class="gnav-indicator" id="gnav-indicator"></div>
+            </div>
+        </div>
+
+        <!-- Action / CTA -->
+        <div class="gnav-cta-wrapper">
+            <a class="gnav-try" href="/#studio">
+                <span>Try Now</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
+            <button class="gnav-toggle" id="gnav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="gnav-links">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+</nav>
